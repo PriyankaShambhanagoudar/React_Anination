@@ -3,9 +3,9 @@ import React from 'react';
 import './Backdrop.css';
 
 const backdrop = (props) => {
-    const cssClassname = ['Backdrop', props.show ? 'BackdroplOpen' : 'BackdropClosed'];
+    const cssClasses = ['Backdrop', props.show ? 'BackdropOpen' : 'BackdropClosed'];
 
-    return <div className={cssClassname.join(' ')}></div>
+    return <div className={cssClasses.join(' ')}></div>;
 };
 
 export default backdrop;
