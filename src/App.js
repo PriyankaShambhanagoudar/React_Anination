@@ -9,7 +9,7 @@ import List from "./components/List/List";
 class App extends Component {
   state = {
     modalIsOpen: false,
-    showBlock: false,
+    showBlock: false
   };
 
   showModal = () => {
@@ -27,8 +27,7 @@ class App extends Component {
         <button
           className="Button"
           onClick={() =>
-            this.setState((prevState) => ({ showBlock: !prevState.showBlock }))
-          }
+            this.setState(prevState => ({ showBlock: !prevState.showBlock }))}
         >
           Toggle
         </button>
@@ -38,8 +37,14 @@ class App extends Component {
           timeout={1000}
           mountOnEnter
           unmountOnExit
+          onEnter={() => console.log('onEnter')}
+          onEntering={() => console.log('onEntering')}
+          onEntered={() => console.log('onEntered')}
+          onExit={() => console.log('onExit')}
+          onExiting={() => console.log('onExiting')}
+          onExited={() => console.log('onExited')}
         >
-          {(state) => (
+          {state => (
             <div
               style={{
                 backgroundColor: "red",
@@ -47,14 +52,12 @@ class App extends Component {
                 height: 100,
                 margin: "auto",
                 transition: "opacity 1s ease-out",
-                opacity: state === "exiting" ? 0 : 1,
+                opacity: state === "exiting" ? 0 : 1
               }}
-            ></div>
+            />
           )}
         </Transition>
-
         <Modal show={this.state.modalIsOpen} closed={this.closeModal} />
-
         {this.state.modalIsOpen ? <Backdrop show /> : null}
         <button className="Button" onClick={this.showModal}>
           Open Modal
